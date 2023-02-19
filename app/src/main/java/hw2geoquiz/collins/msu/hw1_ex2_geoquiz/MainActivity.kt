@@ -55,10 +55,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.previousButton.setOnClickListener{
-            currentIndex = (currentIndex - 1) % questionBank.size
-            //val questionTextResId = questionBank[currentIndex].textResId
-            //binding.questionTextview.setText(questionTextResId)
-            updateQuestion()
+            if (currentIndex > 0) {
+                currentIndex = (currentIndex - 1) % questionBank.size
+                //val questionTextResId = questionBank[currentIndex].textResId
+                //binding.questionTextview.setText(questionTextResId)
+                updateQuestion()
+            }
+            else if (currentIndex <= 0) {
+                currentIndex = 0
+            }
         }
 
         binding.nextButton.setOnClickListener{
